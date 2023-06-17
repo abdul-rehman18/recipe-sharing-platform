@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Recipe</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Create Recipe</h1>
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="recipe_name" class="form-label">Recipe Name</label>
+        <input type="text" class="form-control" id="recipe_name" name="recipe_name" required>
+      </div>
+      <div class="mb-3">
+        <label for="ingredients" class="form-label">Ingredients</label>
+        <textarea class="form-control" id="ingredients" name="ingredients" rows="4" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="preparation_steps" class="form-label">Preparation Steps</label>
+        <textarea class="form-control" id="preparation_steps" name="preparation_steps" rows="4" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="dietary_information" class="form-label">Dietary Information</label>
+        <input type="text" class="form-control" id="dietary_information" name="dietary_information" required>
+      </div>
+      <!-- <div class="mb-3">
+        <label for="category_id" class="form-label">Category ID</label>
+        <input type="number" class="form-control" id="category_id" name="category_id" required>
+      </div> -->
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

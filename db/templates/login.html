@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet"  href=" {% static 'style.css' %} ">
+</head>
+<body>
+    <div class="container">
+  <h2>Login</h2>
+  {% if error_message %}
+  <p class="error">{{ error_message }}</p>
+  {% endif %}
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+    </div>
+    <input type="submit" value="Login">
+  </form>
+</div>
+</body>
+</html>
