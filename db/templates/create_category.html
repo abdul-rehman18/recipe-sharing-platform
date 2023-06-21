@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Category</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Create Category</h1>
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="categroy_name" class="form-label">Category Name</label>
+        <input type="text" class="form-control" id="categroy_name" name="categroy_name" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Category</button>
+    </form>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

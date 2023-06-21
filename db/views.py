@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
-from .models import Recipes,User
+from .models import Recipes,User,Category
+from django.contrib import messages
 
 
 
@@ -26,14 +27,23 @@ def create_recipe(request):
             RecipeName=request.POST['recipe_name'],
             Ingredients=request.POST['ingredients'],
             PreparationSteps=request.POST['preparation_steps'],
-            DietaryInformation=request.POST['dietary_information']
-            # CategoryID=int(request.POST['category_id'])
+            DietaryInformation=request.POST['dietary_information'],
+            CategoryID=int(request.POST['category_id'])
         )
         recipe.save()
-        return redirect('recipe_detail') 
+        return redirect('recipe_de') 
 
     return render(request, 'create_recipe.html')
 
+
+def create_catgeory(request):
+    if request.method =='POST':
+        category = Category(
+            CategoryName= request.POST['categroy_name']
+        )
+        category.save()
+        return redirect('recipe_de')
+    return render(request,'create_category.html')
 
 
 def signup(request):
@@ -44,11 +54,8 @@ def signup(request):
             Password = request.POST['password']
         )
         
-        if User.objects.filter(Email=Email).exists():
-            messages.info(request, 'Email is already taken')
-            return redirect('signup')
-        else:
-            user.save()
-            return redirect('login')
+    
+        user.save()
+        return redirect('category')
 
     return render(request,'signup.html')
